@@ -17,14 +17,24 @@ function Wishlist() {
   
   return (
     <div>
-        <h1>Wishlist</h1>
-        <input type="text" value={query}  onChange={ (e) => setQuery( e.target.value ) }/>
-        <button onClick={ addList }>ADD</button>
-        <ul>
-            {
-              lists.map( (el, i) => <li style={{listStyle: "none"}} key={i}>{el.item}</li>)    
-            }
-        </ul>
+      <h1>Wishlist</h1>
+      { 
+        lists.length<=3 ?
+        <>
+          <input type="text" value={query}  onChange={ (e) => setQuery( e.target.value ) }/>
+          <button onClick={ addList }>ADD</button>
+          <ul>
+              {
+                lists.map( (el, i) => <li style={{listStyle: "none"}} key={i}>{el.item}</li>)    
+              }
+          </ul> 
+        </> :
+        <>
+          <h3 style={{color:"red"}}>You cannot add more than 3 items to wishlist</h3>
+        </>
+    }
+     
+
     </div>
   )
 }
